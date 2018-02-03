@@ -1,4 +1,5 @@
 const express = require('express');
+const test = require('./backend/test.js')
 const hbs = require('hbs');
 const port = 3000;
 
@@ -11,7 +12,11 @@ app.set('view engine', 'hbs');
 app.use(express.static(__dirname + '/public'));
 
 app.get('/', (req, res) => {
-  res.render('home');
+  var testresult = test.testfunction();
+
+  res.render('home', {
+    data: testresult
+  });
 });
 
 app.listen(port, () => {

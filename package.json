@@ -4,6 +4,7 @@
   "description": "Repo for McHack project",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,6 +19,7 @@
   "homepage": "https://github.com/niconoloco/McHack#readme",
   "dependencies": {
     "express": "^4.16.2",
-    "hbs": "^4.0.1"
+    "hbs": "^4.0.1",
+    "nodemon": "^1.14.12"
   }
 }
