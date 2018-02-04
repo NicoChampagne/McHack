@@ -30,7 +30,9 @@ app.get('/', (req, res) => {
       res.render('home', {
         labels: labelResults,
         faces: faceResults,
-        properties: imageProperties
+        properties: imageProperties,
+        color1: [66, 134, 244],
+        color2: [240, 34, 144]
       });
     })
 });

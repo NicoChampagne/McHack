@@ -18,25 +18,26 @@
 <body>
 
   <script>
-    angular.module('myApp', [])
+  var app = angular.module('myApp', []);
+  app.controller('myCtrl', function($scope) {
+      $scope.myColor='rgb({{color1}})';
+      $scope.myColor2='rgb({{color2}})';
+      $scope.heelo='{{properties}}';
+      alert({{properties}});
+
+  });
   </script>
 
-    <div ng-app="myApp">
+    <div ng-app="myApp"  ng-controller="myCtrl">
 
-      <input type="text" ng-model="myColor" placeholder="enter a color name">
-      <input type="text" ng-model="myColor2" placeholder="enter a color name">
-
-      <div id="banner">
-      </div>
+      <input ng-value="heelo">
 
       <div id="banner"></div>
 
-      <div id="tv2" ng-style="{background: myColor}">
+      <div id="tv2" ng-style="{background: myColor }">
         <div id="tv">
           <div class="text-effect">
             <h1 class="neon" data-text="RetroU" contenteditable>RetroU</h1>
-
-
             <div class="gradient" ng-style="{'background': 'linear-gradient(45deg,'+ myColor +', '+ myColor2 +')'}"></div>
             <div class="spotlight"></div>
           </div>
@@ -56,8 +57,7 @@
 
       <h1 class="my-4 text-center text-lg-left">Thumbnail Gallery</h1>
 
-      <div id="images" class="row text-center text-lg-left">
-      </div>
+      <div id="images" class="row text-center text-lg-left"></div>
 
     </div>
 
