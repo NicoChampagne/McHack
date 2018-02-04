@@ -5,28 +5,32 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/neonTitle.css">
+  <link rel="stylesheet" href="css/funkyButton.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </head>
 <body>
 
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-  <ul class="navbar-nav">
-    <li class="nav-item active">
-      <a class="nav-link" href="#">Active</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Link</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Link</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link disabled" href="#">Disabled</a>
-    </li>
-  </ul>
-</nav>
-  <p>{{data}}</p>
+<div id="banner">
+</div>
+
+  <div id="tv2" ng-class="customStyle.colorClass">>
+    <div id="tv">
+      <div class="text-effect">
+        <h1 class="neon" data-text="RetroU" contenteditable>RetroU</h1>
+        <div class="gradient"></div>
+        <div class="spotlight"></div>
+      </div>
+    </div>
+  </div>
+
+<div style="text-align:center;">
+  <a href="#" id="button" style="width:40%;"><span>Prev</span></a>
+  <a href="#" id="button" style="width:40%;"><span>Next</span></a>
+</div>
+
+
 </body>
 </html>
