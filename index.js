@@ -1,5 +1,6 @@
 const express = require('express');
-const test = require('./backend/test.js')
+const imageProcessor = require('./backend/imageProcessingService.js');
+const waitUntil = require('wait-until');
 const hbs = require('hbs');
 const port = 3000;
 
@@ -12,11 +13,26 @@ app.set('view engine', 'hbs');
 app.use(express.static(__dirname + '/public'));
 
 app.get('/', (req, res) => {
-  var testresult = test.testfunction();
+  var labelResults = imageProcessor.detectImageLabels();
+  var faceResults = imageProcessor.detectFaces();
+  var imageProperties = imageProcessor.detectImageColorProperties();
 
-  res.render('home', {
-    data: testresult
-  });
+  waitUntil()
+    .interval(500)
+    .times(20)
+    .condition(function() {
+      return (labelResults.length !== 0 && faceResults.length !== 0 && imageProperties.length !== 0) ? true : false;
+    })
+    .done(function(result) {
+      console.log(labelResults);
+      console.log(faceResults);
+      console.log(imageProperties);
+      res.render('home', {
+        labels: labelResults,
+        faces: faceResults,
+        properties: imageProperties
+      });
+    })
 });
 
 app.listen(port, () => {
