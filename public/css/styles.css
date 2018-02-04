@@ -1,1 +1,27 @@
 /* Here goes all the custom CSS */
+html,
+body {
+  margin: 0;
+  padding: 10px;
+  background: darken(whitesmoke, 10%);
+}
+#instafeed {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+
+  a {
+    position: relative;
+    width: 50%;
+
+    @media only screen and (min-width: $lg) {
+      width: 25%
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
