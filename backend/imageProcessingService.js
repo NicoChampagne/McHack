@@ -1,7 +1,7 @@
 const express = require('express');
 const vision = require('@google-cloud/vision');
 const client = new vision.ImageAnnotatorClient();
-const Canvas = require('canvas');
+// const Canvas = require('canvas');
 const fs = require('fs');
 
 
@@ -35,9 +35,9 @@ function detectFaces(img) {
       const faces = results[0].faceAnnotations;
       dataResults.push(faces.length);
 
-      addSunGlassesToFaces(faces, img, './public/img/sunglassefied.png', Canvas, console => {
-        console.log('Finished!');
-      });
+      // addSunGlassesToFaces(faces, img, './res/test-images/sunglassefied.png', Canvas, console => {
+      //   console.log('Finished!');
+      // });
     })
     .catch(err => {
       console.error('ERROR:', err);
@@ -75,7 +75,7 @@ function detectFaces(img) {
     // Open the original image into a canvas
     var img = new Image();
     img.src = image;
-    var canvas = new Canvas(img.width, img.height);
+    // var canvas = new Canvas(img.width, img.height);
     var context = canvas.getContext('2d');
     context.drawImage(img, 0, 0, img.width, img.height);
 

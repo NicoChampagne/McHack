@@ -19,7 +19,6 @@
   "homepage": "https://github.com/niconoloco/McHack#readme",
   "dependencies": {
     "@google-cloud/vision": "^0.15.0",
-    "canvas": "^1.6.9",
     "express": "^4.16.2",
     "hbs": "^4.0.1",
     "image-downloader": "^3.3.0",
