@@ -11,6 +11,9 @@
   <!-- Custom styles for this template -->
   <link href="css/thumbnail-gallery.css" rel="stylesheet">
 
+  <link rel="stylesheet" href="css/neonTitle.css">
+  <link rel="stylesheet" href="css/funkyButton.css">
+
   <script type="text/javascript" src="js/instafeed.js"></script>
   <script type="text/javascript" src="js/runInstafeed.js"></script>
 
@@ -30,104 +33,36 @@
       var div = document.getElementById( 'images' );
       div.insertAdjacentHTML( 'beforeend', text );
     },1000);
-
-
   </script>
 
-  {{#each finalImg}}
-    {{this}}
-    {{/each}}
+  <div id="banner">
+  </div>
+
+    <div id="tv2">
+      <div id="tv">
+        <div class="text-effect">
+          <h1 class="neon" data-text="RetroU" contenteditable>RetroU</h1>
+          <div class="gradient"></div>
+          <div class="spotlight"></div>
+        </div>
+      </div>
+    </div>
+
+  <div style="text-align:center;">
+    <a href="#" id="button" style="width:40%;"><span>Prev</span></a>
+    <a href="#" id="button" style="width:40%;"><span>Next</span></a>
+  </div>
+
   <!-- Page Content -->
     <div class="container">
 
       <h1 class="my-4 text-center text-lg-left">Thumbnail Gallery</h1>
 
       <div id="images" class="row text-center text-lg-left">
-
-        {{#each finalImg}}
-          <div class="col-lg-3 col-md-4 col-xs-6">
-            <a href="#" class="d-block mb-4 h-100">
-              <img class="img-fluid img-thumbnail" src="img/{{this}}" alt="">
-            </a>
-          </div>
-        {{/each}}
-        <!-- <div class="col-lg-3 col-md-4 col-xs-6">
-          <a href="#" class="d-block mb-4 h-100">
-            <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
-          </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-xs-6">
-          <a href="#" class="d-block mb-4 h-100">
-            <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
-          </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-xs-6">
-          <a href="#" class="d-block mb-4 h-100">
-            <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
-          </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-xs-6">
-          <a href="#" class="d-block mb-4 h-100">
-            <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
-          </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-xs-6">
-          <a href="#" class="d-block mb-4 h-100">
-            <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
-          </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-xs-6">
-          <a href="#" class="d-block mb-4 h-100">
-            <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
-          </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-xs-6">
-          <a href="#" class="d-block mb-4 h-100">
-            <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
-          </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-xs-6">
-          <a href="#" class="d-block mb-4 h-100">
-            <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
-          </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-xs-6">
-          <a href="#" class="d-block mb-4 h-100">
-            <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
-          </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-xs-6">
-          <a href="#" class="d-block mb-4 h-100">
-            <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
-          </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-xs-6">
-          <a href="#" class="d-block mb-4 h-100">
-            <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
-          </a>
-        </div> -->
       </div>
 
     </div>
     <!-- /.container -->
-
-    <div id="banner">
-    </div>
-
-      <div id="tv2" ng-class="customStyle.colorClass">>
-        <div id="tv">
-          <div class="text-effect">
-            <h1 class="neon" data-text="RetroU" contenteditable>RetroU</h1>
-            <div class="gradient"></div>
-            <div class="spotlight"></div>
-          </div>
-        </div>
-      </div>
-
-    <div style="text-align:center;">
-      <a href="#" id="button" style="width:40%;"><span>Prev</span></a>
-      <a href="#" id="button" style="width:40%;"><span>Next</span></a>
-    </div>
 
     <div id="instafeed" style="visibility: hidden"></div>
 
