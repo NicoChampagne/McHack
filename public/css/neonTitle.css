@@ -1,0 +1,126 @@
+.text-effect {
+  overflow: hidden;
+  position: relative;
+  filter: contrast(110%) brightness(190%);
+  width: fit-content;
+}
+
+.neon {
+  position: relative;
+  background: black;
+  color: transparent;
+}
+.neon::before, .neon::after {
+  content: attr(data-text);
+  color: white;
+  filter: blur(0.02em);
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+.neon::after {
+  mix-blend-mode: difference;
+}
+
+.gradient,
+.spotlight {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 10;
+}
+
+.gradient {
+  background: linear-gradient(45deg, purple, orange);
+  mix-blend-mode: multiply;
+}
+
+.spotlight {
+  animation: light 5s infinite linear;
+  background: radial-gradient(circle, #ffffff, rgba(0, 0, 0, 0) 25%) 0 0/25% 25%, radial-gradient(circle, #ffffff, #7b7b7b 25%) 50% 50%/12.5% 12.5%;
+  top: -100%;
+  left: -100%;
+  mix-blend-mode: color-dodge;
+}
+
+@keyframes light {
+  100% {
+    transform: translate3d(50%, 50%, 0);
+  }
+}
+.neon {
+  font: 700 60px 'Lato', sans-serif;
+  text-align: center;
+  margin: 0;
+}
+.neon:focus {
+  outline: none;
+  border: 1px dotted white;
+}
+
+
+#tv {
+  position: relative;
+  width: 200px;
+  height: 150px;
+  background: black;
+  border-radius: 50% / 10%;
+  color: white;
+  text-align: center;
+  text-indent: .1em;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 35px;
+}
+#tv:before {
+  content: '';
+  position: absolute;
+  top: 10%;
+  bottom: 10%;
+  right: -5%;
+  left: -5%;
+  background: inherit;
+  border-radius: 5% / 50%;
+
+}
+
+#tv2 {
+    position: relative;
+    width: 220px;
+    height: 170px;
+    background: #ec528d;
+    border-radius: 50% / 10%;
+    color: white;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 10px;
+}
+#tv2:before {
+  content: '';
+  position: absolute;
+  top: 10%;
+  bottom: 10%;
+  right: -5%;
+  left: -5%;
+  background: inherit;
+  border-radius: 5% / 50%;
+
+}
+
+#banner{
+  background-color: gray;
+  background-image: repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,.5) 35px, rgba(255,255,255,.5) 70px);
+}
+
+/*@media only screen and (max-width : 700px) {
+  .neon {font: 700 80px 'Lato', sans-serif;}}
+
+@media only screen and (max-width : 500px) {
+  .neon {font: 700 60px 'Lato', sans-serif;}}*/
