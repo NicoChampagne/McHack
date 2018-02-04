@@ -22,3 +22,10 @@
     });
     feed.run();
     console.log(finalImg);
+    setTimeout(function(){
+      console.log(finalImg);
+    },1000);
+
+    function getArray() {
+      return this.finalImg;
+    }
