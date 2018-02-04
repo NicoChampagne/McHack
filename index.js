@@ -14,6 +14,8 @@ app.use(express.static(__dirname + '/public'));
 app.get('/', (req, res) => {
   var testresult = test.testfunction();
 
+  let images = ['1.jpg', '2.jpg', '3.jpg'];
+
   res.render('home', {
     data: testresult
   });
