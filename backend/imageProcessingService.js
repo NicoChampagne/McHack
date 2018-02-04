@@ -80,7 +80,6 @@ function detectFaces(img) {
     context.drawImage(img, 0, 0, img.width, img.height);
 
     // Now draw boxes around all the faces
-    // context.drawImage('./res/test-images/sunglasses.png', 33, 71, 104, 124, 21, 20, 87, 104);
     context.strokeStyle = 'rgba(0,255,0,0.8)';
     context.lineWidth = '5';
 

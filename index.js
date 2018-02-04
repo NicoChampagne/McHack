@@ -18,7 +18,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/downloadPic', (req, res) => {
-  var imageUrl = req.query.url;
+  var imageUrl = req.query.uri;
 
   const options = {
     url: imageUrl,
