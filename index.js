@@ -18,11 +18,11 @@ app.get('/', (req, res) => {
 });
 
 app.get('/downloadPic', (req, res) => {
-  var imageUrl = req.query.url;
+  var imageUrl = req.query.uri;
 
   const options = {
     url: imageUrl,
-    dest: './res/test-images/currentPic.jpg'
+    dest: './public/img/currentPic.jpg'
   }
 
   download.image(options)

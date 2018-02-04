@@ -30,6 +30,7 @@ img {
 .imagediv {
   display: block;
   width: 77%;
+  max-width:600px;
   margin: 70px auto 70px auto;
   background-color: #ffffff;
   border-radius: 28px;

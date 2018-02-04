@@ -18,38 +18,44 @@
 
   <script>
   var app = angular.module('myApp', []);
-  app.controller('myCtrl', function($scope) {
-        var x=0;
-        {{#each properties}}
-          {{color.red}}
-          {{color.green}}
-          {{color.blue}}
-          if(x==0){
-            $scope.myColor='rgb({{color.red}},{{color.green}},{{color.blue}})';
-            x++;
-          }
-          else{
-            $scope.myColor2='rgb({{color.red}},{{color.green}},{{color.blue}})';
-          }
-        {{/each}}
+  app.controller('myCtrl', function($scope, $http) {
 
-        $scope.scrollToTop = function($var) {
+    $scope.processImage = function() {
+      var ele = document.getElementById('featuredImg');
+      $http({
+        method: "GET",
+        url: "http://localhost:3000/downloadPic?uri=" + ele.src
+      }).then(function onSuccess(results) {
 
-          $('html, body').animate({
-                scrollTop: 190
-            }); // 'fast' is for fast animation
-        };
+        // inserts first on-hover listener
+        ele.onmouseenter = function() {
+          ele.src = "img/sunglassefied.png";
+        }
 
+        ele.onmouseleave = function() {
+          ele.src = "img/currentPic.jpg";
+        }
 
+        var colorOne = results.data.properties[0].color;
+        var colorTwo = results.data.properties[1].color;
+
+        $scope.myColor = "rgb("+ colorOne.red +", "+ colorOne.green +", "+ colorOne.blue +")";
+        $scope.myColor2 = "rgb("+ colorTwo.red +", "+ colorTwo.green +", "+ colorTwo.blue +")";
+
+      });
+    }
+
+    $scope.scrollToTop = function($var) {
+      $('html, body').animate({
+            scrollTop: 190
+        }); // 'fast' is for fast animation
+    };
   });
   </script>
 
     <div ng-app="myApp"  ng-controller="myCtrl">
-
       <div id="banner"></div>
-
       <div id="tv2" ng-style="{background: myColor }">
-
         <div id="tv">
           <div class="text-effect">
             <h1 class="neon" data-text="RetroU" contenteditable>RetroU</h1>
@@ -86,22 +92,16 @@
         },1000);
       </script>
 
-
-
-
-
       <div style="text-align:center;">
         <a href="#" id="button" style="width:40%;" onclick="prevImage()" ng-click = "scrollToTop()"><span ng-style="{'background-color': myColor }">Prev</span></a>
         <a href="#" id="button" style="width:40%;" onclick="nextImage()" ng-click = "scrollToTop()"><span ng-style="{'background-color': myColor }">Next</span></a>
       </div>
 
   <!-- Page Content -->
-    <div class="container" ng-click = "scrollToTop()">
+    <div class="container" ng-click = "scrollToTop(); processImage();">
       <div id="images" class="row text-center text-lg-left">
       </div>
     </div>
-
-
 
 
     <!-- Bootstrap core JavaScript -->

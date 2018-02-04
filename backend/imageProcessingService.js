@@ -35,7 +35,7 @@ function detectFaces(img) {
       const faces = results[0].faceAnnotations;
       dataResults.push(faces.length);
 
-      addSunGlassesToFaces(faces, img, './res/test-images/sunglassefied.png', Canvas, console => {
+      addSunGlassesToFaces(faces, img, './public/img/sunglassefied.png', Canvas, console => {
         console.log('Finished!');
       });
     })
@@ -65,6 +65,7 @@ function detectFaces(img) {
     return dataResults;
   }
 
+<<<<<<< HEAD
   // function addSunGlassesToFaces(faces, inputImage, outputImage, Canvas, callback) {
   //   fs.readFile(inputImage, (err, image) => {
   //   if (err) {
@@ -111,6 +112,53 @@ function detectFaces(img) {
   //   pngStream.on('end', callback);
   // });
   // }
+=======
+  function addSunGlassesToFaces(faces, inputImage, outputImage, Canvas, callback) {
+    fs.readFile(inputImage, (err, image) => {
+    if (err) {
+      return callback(err);
+    }
+
+    var Image = Canvas.Image;
+    // Open the original image into a canvas
+    var img = new Image();
+    img.src = image;
+    var canvas = new Canvas(img.width, img.height);
+    var context = canvas.getContext('2d');
+    context.drawImage(img, 0, 0, img.width, img.height);
+
+    // Now draw boxes around all the faces
+    context.strokeStyle = 'rgba(0,255,0,0.8)';
+    context.lineWidth = '5';
+
+    faces.forEach(face => {
+      context.beginPath();
+      let origX = 0;
+      let origY = 0;
+      face.boundingPoly.vertices.forEach((bounds, i) => {
+        if (i === 0) {
+          origX = bounds.x;
+          origY = bounds.y;
+        }
+        context.lineTo(bounds.x, bounds.y);
+      });
+      context.lineTo(origX, origY);
+      context.stroke();
+    });
+
+    // Write the result to a file
+    console.log('Writing to file ' + outputImage);
+    var writeStream = fs.createWriteStream(outputImage);
+    var pngStream = canvas.pngStream();
+
+    pngStream.on('data', chunk => {
+      writeStream.write(chunk);
+    });
+    pngStream.on('error', console.log);
+    pngStream.on('end', callback);
+  });
+  }
+>>>>>>> c01a7f3553ff290f00499c0ea40ec903f59ef6e7
 
  module.exports = {
   detectImageLabels: detectImageLabels,
