@@ -4,9 +4,14 @@
   <title>Bootstrap Example</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap core CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="css/thumbnail-gallery.css" rel="stylesheet">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="css/neonTitle.css">
   <link rel="stylesheet" href="css/funkyButton.css">
+
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -41,14 +46,59 @@
         </div>
       </div>
 
+
+<div id="tv2" ng-class="customStyle.colorClass">
+  <div id="tv">
+    <div class="text-effect">
+      <h1 class="neon" data-text="RetroU" contenteditable>RetroU</h1>
+      <div class="gradient"></div>
+      <div class="spotlight"></div>
+    </div>
+  </div>
+</div>
+
       <div style="text-align:center;">
         <a href="#" id="button" style="width:40%;"><span ng-style="{'background-color': myColor }">Prev</span></a>
         <a href="#" id="button" style="width:40%;"><span ng-style="{'background-color': myColor }">Next</span></a>
       </div>
 
-      <div id="instafeed"></div>
+
+<div id="instafeed"></div>
+
+  <!-- Page Content -->
+    <div class="container">
+
+      <h1 class="my-4 text-center text-lg-left">Thumbnail Gallery</h1>
+
+      <div id="images" class="row text-center text-lg-left">
+      </div>
 
     </div>
 
-  </body>
+
+      <script type="text/javascript">
+        var text = '';
+
+        setTimeout(function(){
+          for (i = 0; i < finalImg.length; i++) {
+              text += "<div class='col-lg-3 col-md-4 col-xs-6'><a href='#' class='d-block mb-4 h-100'><img class='img-fluid img-thumbnail' src=//" + finalImg[i] + " alt=''></a></div>";
+          }
+        },1000);
+
+        setTimeout(function(){
+          var div = document.getElementById( 'images' );
+          div.insertAdjacentHTML( 'beforeend', text );
+        },1000);
+      </script>
+      
+    <!-- Bootstrap core JavaScript -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/instafeed.js"></script>
+    <script type="text/javascript" src="js/runInstafeed.js"></script>
+
+</body>
 </html>

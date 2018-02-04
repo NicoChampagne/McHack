@@ -10,5 +10,5 @@ return 'images';
 
 
 module.exports = {
-  testfunction: testfunction,
+ testfunction: testfunction,
 }
