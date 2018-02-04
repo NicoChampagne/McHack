@@ -18,23 +18,20 @@ body {
   background-color: #251212;
   background-size: 100px 100px;
 }
-#instafeed {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
 
-  a {
-    position: relative;
-    width: 50%;
+img {
+  display: block;
+  width: 98%;
+  margin: auto;
+  padding: 10px 0px 10px 0px;
+  border-radius: 58px;
+}
 
-    @media only screen and (min-width: $lg) {
-      width: 25%
-    }
+.imagediv {
+  display: block;
+  width: 77%;
+  margin: 70px auto 70px auto;
+  background-color: #ffffff;
+  border-radius: 28px;
 
-    img {
-      display: block;
-      width: 100%;
-      height: 100%;
-    }
-  }
 }
