@@ -17,19 +17,41 @@
 </head>
 <body>
 
-  <ul class="people_list">
-    {{#each images}}
-      <li>{{this}}</li>
+  <script type="text/javascript">
+    var text = '';
+
+    setTimeout(function(){
+      for (i = 0; i < finalImg.length; i++) {
+          text += "<div class='col-lg-3 col-md-4 col-xs-6'><a href='#' class='d-block mb-4 h-100'><img class='img-fluid img-thumbnail' src=//" + finalImg[i] + " alt=''></a></div>";
+      }
+    },1000);
+
+    setTimeout(function(){
+      var div = document.getElementById( 'images' );
+      div.insertAdjacentHTML( 'beforeend', text );
+    },1000);
+
+
+  </script>
+
+  {{#each finalImg}}
+    {{this}}
     {{/each}}
-  </ul>
   <!-- Page Content -->
     <div class="container">
 
       <h1 class="my-4 text-center text-lg-left">Thumbnail Gallery</h1>
 
-      <div class="row text-center text-lg-left">
+      <div id="images" class="row text-center text-lg-left">
 
-        <div class="col-lg-3 col-md-4 col-xs-6">
+        {{#each finalImg}}
+          <div class="col-lg-3 col-md-4 col-xs-6">
+            <a href="#" class="d-block mb-4 h-100">
+              <img class="img-fluid img-thumbnail" src="img/{{this}}" alt="">
+            </a>
+          </div>
+        {{/each}}
+        <!-- <div class="col-lg-3 col-md-4 col-xs-6">
           <a href="#" class="d-block mb-4 h-100">
             <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
           </a>
@@ -83,12 +105,7 @@
           <a href="#" class="d-block mb-4 h-100">
             <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
           </a>
-        </div>
-        <div class="col-lg-3 col-md-4 col-xs-6">
-          <a href="#" class="d-block mb-4 h-100">
-            <img class="img-fluid img-thumbnail" src="http://placehold.it/400x300" alt="">
-          </a>
-        </div>
+        </div> -->
       </div>
 
     </div>
