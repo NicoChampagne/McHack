@@ -22,7 +22,7 @@ app.get('/downloadPic', (req, res) => {
 
   const options = {
     url: imageUrl,
-    dest: './res/test-images/currentPic.jpg'
+    dest: './public/img/currentPic.jpg'
   }
 
   download.image(options)

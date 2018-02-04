@@ -35,7 +35,7 @@ function detectFaces(img) {
       const faces = results[0].faceAnnotations;
       dataResults.push(faces.length);
 
-      addSunGlassesToFaces(faces, img, './res/test-images/sunglassefied.png', Canvas, console => {
+      addSunGlassesToFaces(faces, img, './public/img/sunglassefied.png', Canvas, console => {
         console.log('Finished!');
       });
     })

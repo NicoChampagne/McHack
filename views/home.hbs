@@ -21,11 +21,21 @@
   app.controller('myCtrl', function($scope, $http) {
 
     $scope.processImage = function() {
-      var src = document.getElementById('featuredImg').src;
+      var ele = document.getElementById('featuredImg');
       $http({
         method: "GET",
-        url: "http://localhost:3000/downloadPic?uri=" + src
+        url: "http://localhost:3000/downloadPic?uri=" + ele.src
       }).then(function onSuccess(results) {
+
+        // inserts first on-hover listener
+        ele.onmouseenter = function() {
+          ele.src = "img/sunglassefied.png";
+        }
+
+        ele.onmouseleave = function() {
+          ele.src = "img/currentPic.jpg";
+        }
+
         var colorOne = results.data.properties[0].color;
         var colorTwo = results.data.properties[1].color;
 
