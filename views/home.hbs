@@ -10,9 +10,11 @@
   <link rel="stylesheet" href="css/neonTitle.css">
   <link rel="stylesheet" href="css/funkyButton.css">
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/modal.css">
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
   <script type="text/javascript" src="js/instafeed.js"></script>
+  <script type="text/javascript" src="js/modal.js"></script>
   <script type="text/javascript" src="js/runInstafeed.js"></script>
 </head>
 <body>
@@ -41,24 +43,24 @@
         </div>
       </div>
 
+      <div id="instafeed"></div>
+        <div class="imagediv">
+        <div class="featured">
+          <img src="./img/1.jpg">
+        </div>
+      </div>
+
       <div style="text-align:center;">
         <a href="#" id="button" style="width:40%;"><span ng-style="{'background-color': myColor }">Prev</span></a>
         <a href="#" id="button" style="width:40%;"><span ng-style="{'background-color': myColor }">Next</span></a>
       </div>
 
-
-<div id="instafeed"></div>
-
   <!-- Page Content -->
     <div class="container">
-
       <h1 class="my-4 text-center text-lg-left">Thumbnail Gallery</h1>
-
       <div id="images" class="row text-center text-lg-left">
       </div>
-
     </div>
-
 
       <script type="text/javascript">
         var text = '';
@@ -74,7 +76,6 @@
           div.insertAdjacentHTML( 'beforeend', text );
         },1000);
       </script>
-
 
 
     <!-- Bootstrap core JavaScript -->
