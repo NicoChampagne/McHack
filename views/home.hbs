@@ -4,41 +4,53 @@
   <title>RetroU McHacks</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Custom styles for this template -->
-  <link href="css/thumbnail-gallery.css" rel="stylesheet">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="css/neonTitle.css">
   <link rel="stylesheet" href="css/funkyButton.css">
   <link rel="stylesheet" href="css/styles.css">
-  <link rel="stylesheet" href="css/modal.css">
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
   <script type="text/javascript" src="js/instafeed.js"></script>
-  <script type="text/javascript" src="js/modal.js"></script>
+  <script type="text/javascript" src="js/changeimage.js"></script>
   <script type="text/javascript" src="js/runInstafeed.js"></script>
 </head>
 <body>
 
   <script>
-    angular.module('myApp', [])
+  var app = angular.module('myApp', []);
+  app.controller('myCtrl', function($scope) {
+        var x=0;
+        {{#each properties}}
+          {{color.red}}
+          {{color.green}}
+          {{color.blue}}
+          if(x==0){
+            $scope.myColor='rgb({{color.red}},{{color.green}},{{color.blue}})';
+            x++;
+          }
+          else{
+            $scope.myColor2='rgb({{color.red}},{{color.green}},{{color.blue}})';
+          }
+        {{/each}}
+
+        $scope.scrollToTop = function($var) {
+
+          $('html, body').animate({
+                scrollTop: 190
+            }); // 'fast' is for fast animation
+        };
+
+  });
   </script>
 
-    <div ng-app="myApp">
-
-      <input type="text" ng-model="myColor" placeholder="enter a color name">
-      <input type="text" ng-model="myColor2" placeholder="enter a color name">
-
-      <div id="banner">
-      </div>
+    <div ng-app="myApp"  ng-controller="myCtrl">
 
       <div id="banner"></div>
 
-      <div id="tv2" ng-style="{background: myColor}">
+      <div id="tv2" ng-style="{background: myColor }">
         <div id="tv">
           <div class="text-effect">
             <h1 class="neon" data-text="RetroU" contenteditable>RetroU</h1>
-
-
             <div class="gradient" ng-style="{'background': 'linear-gradient(45deg,'+ myColor +', '+ myColor2 +')'}"></div>
             <div class="spotlight"></div>
           </div>
@@ -46,30 +58,19 @@
       </div>
 
       <div id="instafeed"></div>
-        <div class="imagediv">
+        <div class="imagediv" ng-style="{background: myColor2 }">
         <div class="featured">
-          <img src="./img/1.jpg">
+          <img src="./img/1.jpg" id="featuredImg">
         </div>
       </div>
 
-      <div style="text-align:center;">
-        <a href="#" id="button" style="width:40%;"><span ng-style="{'background-color': myColor }">Prev</span></a>
-        <a href="#" id="button" style="width:40%;"><span ng-style="{'background-color': myColor }">Next</span></a>
-      </div>
-
-  <!-- Page Content -->
-    <div class="container">
-      <h1 class="my-4 text-center text-lg-left">Thumbnail Gallery</h1>
-      <div id="images" class="row text-center text-lg-left">
-      </div>
-    </div>
-
       <script type="text/javascript">
         var text = '';
-
         setTimeout(function(){
           for (i = 0; i < finalImg.length; i++) {
-              text += "<div class='col-lg-3 col-md-4 col-xs-6'><a href='#' class='d-block mb-4 h-100'><img class='img-fluid img-thumbnail' src=//" + finalImg[i] + " alt=''></a></div>";
+              text += "<div class='col-lg-3 col-md-4 col-xs-6 mb-5' onclick='changeImage("+JSON.stringify(finalImg[i])+")' >"+
+              "<a href='#featured'>"+
+              "<img class='img-fluid img-thumbnail' src='//"+finalImg[i]+"'></img></a></div>";
           }
         },1000);
 
@@ -78,6 +79,23 @@
           div.insertAdjacentHTML( 'beforeend', text );
         },1000);
       </script>
+
+
+
+
+
+      <div style="text-align:center;">
+        <a href="#" id="button" style="width:40%;" ng-click = "scrollToTop()"><span ng-style="{'background-color': myColor }">Prev</span></a>
+        <a href="#" id="button" style="width:40%;" ng-click = "scrollToTop()"><span ng-style="{'background-color': myColor }">Next</span></a>
+      </div>
+
+  <!-- Page Content -->
+    <div class="container" ng-click = "scrollToTop()">
+      <div id="images" class="row text-center text-lg-left">
+      </div>
+    </div>
+
+
 
 
     <!-- Bootstrap core JavaScript -->
