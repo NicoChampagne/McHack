@@ -1,17 +1,17 @@
 const express = require('express');
 const vision = require('@google-cloud/vision');
 const client = new vision.ImageAnnotatorClient();
-// const Canvas = require('canvas');
+const Canvas = require('canvas');
 const fs = require('fs');
 
 
 var app = express();
 
-function detectImageLabels() {
+function detectImageLabels(img) {
   var dataResults = [];
 
   client
-    .labelDetection('./res/test-images/dogs.jpg')
+    .labelDetection(img)
     .then(results => {
       const labels = results[0].labelAnnotations;
       labels.forEach(label => {
@@ -25,9 +25,9 @@ function detectImageLabels() {
     return dataResults;
   }
 
-function detectFaces() {
+function detectFaces(img) {
   var dataResults = [];
-  const request = {image: {source: {filename: './res/test-images/dogs.jpg'}}};
+  const request = {image: {source: {filename: img}}};
 
   client
     .faceDetection(request)
@@ -35,9 +35,9 @@ function detectFaces() {
       const faces = results[0].faceAnnotations;
       dataResults.push(faces.length);
 
-      // addSunGlassesToFaces(faces, './res/test-images/dogs.jpg', './res/test-images/dogs-sunglasses.png', Canvas, console => {
-      //   console.log('Finished!');
-      // });
+      addSunGlassesToFaces(faces, img, './res/test-images/sunglassefied.png', Canvas, console => {
+        console.log('Finished!');
+      });
     })
     .catch(err => {
       console.error('ERROR:', err);
@@ -45,11 +45,11 @@ function detectFaces() {
     return dataResults;
   }
 
- function detectImageColorProperties() {
+ function detectImageColorProperties(img) {
     var dataResults = [];
 
     client
-    .imageProperties(`./res/test-images/dogs.jpg`)
+    .imageProperties(img)
     .then(results => {
       const properties = results[0].imagePropertiesAnnotation;
       const colors = properties.dominantColors.colors;
