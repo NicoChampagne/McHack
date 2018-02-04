@@ -67,35 +67,35 @@
 
       <div id="instafeed"></div>
         <div class="imagediv" ng-style="{background: myColor2 }">
-        <div class="featured">
-          <img src="./img/1.jpg" id="featuredImg">
+        <div class="featured" id="featureid">
+          <img src="./img/1.jpg" id="featuredImg" class="imgclass">
         </div>
       </div>
 
-<<<<<<< Updated upstream
       <script type="text/javascript">
         var text = '';
+        var x;
         setTimeout(function(){
           for (i = 0; i < finalImg.length; i++) {
-              text += "<div class='col-lg-3 col-md-4 col-xs-6 mb-5' onclick='changeImage("+JSON.stringify(finalImg[i])+")' >"+
+              x="the"+i;
+              text += "<div class='col-lg-3 col-md-4 col-xs-6 mb-5' onclick=changeImage('//'+"+JSON.stringify(finalImg[i])+",'"+x+"')  >"+
               "<a href='#featured'>"+
-              "<img class='img-fluid img-thumbnail' src='//"+finalImg[i]+"'></img></a></div>";
+              "<img class='img-fluid img-thumbnail' class='"+x+"' id='"+x+"' src='//"+finalImg[i]+"'></img></a></div>";
           }
         },1000);
+
+
 
         setTimeout(function(){
           var div = document.getElementById( 'images' );
           div.insertAdjacentHTML( 'beforeend', text );
         },1000);
       </script>
-=======
-
->>>>>>> Stashed changes
 
 
       <div style="text-align:center;">
-        <a href="#" id="button" style="width:40%;" ng-click = "scrollToTop()"><span ng-style="{'background-color': myColor }">Prev</span></a>
-        <a href="#" id="button" style="width:40%;" ng-click = "scrollToTop()"><span ng-style="{'background-color': myColor }">Next</span></a>
+        <a href="#" id="button" style="width:40%;" onclick="prevImage()" ng-click = "scrollToTop()"><span ng-style="{'background-color': myColor }">Prev</span></a>
+        <a href="#" id="button" style="width:40%;" onclick="nextImage()" ng-click = "scrollToTop()"><span ng-style="{'background-color': myColor }">Next</span></a>
       </div>
 
   <!-- Page Content -->
