@@ -65,7 +65,6 @@ function detectFaces(img) {
     return dataResults;
   }
 
-
   function addSunGlassesToFaces(faces, inputImage, outputImage, Canvas, callback) {
     fs.readFile(inputImage, (err, image) => {
     if (err) {
